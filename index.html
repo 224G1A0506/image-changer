@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMAGE CHANGER</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+        }
+
+        .image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        h3 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .image:hover + h3 {
+            transform: scale(1.1);
+            color: #ffd700;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .image {
+                width: 200px;
+                height: 200px;
+            }
+            
+            h3 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>IMAGE CHANGER</h1>
+        <div class="image">
+            <img src="https://cdn.pixabay.com/photo/2023/04/16/10/55/nature-7929920_1280.jpg" alt="image">
+        </div>
+        <h3>LONDON</h3>
+    </div>
+    <script>
+        let image = document.querySelector('.image img');
+        let h3 = document.querySelector('h3');
+        let previmg = image.src;
+        let prevtext = h3.innerText;
+        image.addEventListener('mouseover', () => {
+            image.src = "https://cdn.pixabay.com/photo/2023/12/26/11/46/cake-8470012_1280.jpg";
+            h3.innerText = "NEW YORK";
+        });
+        image.addEventListener('mouseout', () => {
+            image.src = previmg;
+            h3.innerText = prevtext;
+        });
+    </script>
+</body>
+</html>
